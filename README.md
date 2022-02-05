@@ -1,5 +1,7 @@
 # omni-coveragereporter-lein
 
+Omni reporter for lein projects
+
 A Leiningen plugin to do many wonderful things.
 
 ## Usage
