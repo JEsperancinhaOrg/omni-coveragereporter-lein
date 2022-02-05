@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "lein"
+    directory: "/"
+    schedule:
+      interval: "daily"
