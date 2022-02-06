@@ -53,4 +53,5 @@ FIXME: and add an example usage that actually makes sense:
 
 ## References
 
+- [Clojure Bits: Working with JSON](https://alexanderoloo.com/blog/2019/09/10/clojure-bits-working-with-json.html)
 - [Clojure test coverage with Eftest and Cloverage](https://bogoyavlensky.com/blog/eftest-cloverage/)
