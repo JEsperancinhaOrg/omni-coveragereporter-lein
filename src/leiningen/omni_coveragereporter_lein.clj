@@ -2,11 +2,13 @@
   (:require [clojure.core]
             [clojure.java.io :as io]))
 
+(def banner (io/resource
+              "banner.txt" ))
 (defn omni-coveragereporter-lein
-  "I don't do a lot."
+  "Omni Coverage Plugin For Leiningen Repos.
+  Check https://leiningen.org/ for further details on how to use these repos"
   [_ & _]
-  (println "Hi!")
-  (.getCanonicalPath (clojure.java.io/file "."))
-  (println (.getCanonicalPath (clojure.java.io/file ".")))
-  (println (slurp (io/resource "banner.txt")))
+  ;(.getCanonicalPath (clojure.java.io/file "."))
+  ;(println (.getCanonicalPath (clojure.java.io/file ".")))
+  (println (slurp banner))
   )
