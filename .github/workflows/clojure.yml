@@ -13,11 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install dependencies
+    - name: Install Dependencies
       run: lein deps
-    - name: Run tests
+    - name: Run Tests
       run: lein test
     - name: Run Coverage
-      run: lein cloverage --lcov
-#     - name: Run Plugin
-#       run: lein omni-coveragereporter-lein
+      run: lein with-profiles +coverage cloverage
+    - name: Run Plugin
+      run: lein with-profiles +run omni-coveragereporter-lein
