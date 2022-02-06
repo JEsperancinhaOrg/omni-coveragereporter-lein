@@ -7,6 +7,7 @@
   :dependencies [
                  [org.clojure/clojure "1.10.3"]
                  [org.jesperancinha.plugins/omni-coveragereporter-commons "0.1.5"]
+                 [cheshire "5.9.0"]
                  ]
   :repl-options {:init-ns test.core}
   :profiles {
