@@ -6,9 +6,11 @@
             :url  "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [
                  [org.clojure/clojure "1.10.3"]
-                 [org.jesperancinha.plugins/omni-coveragereporter-commons "0.1.5"]
+                 [org.jesperancinha.plugins/omni-coveragereporter-commons "0.1.6"]
                  [cheshire "5.9.0"]
+                 [org.jetbrains.kotlin/kotlin-stdlib "1.6.10"]
                  ]
+  :repositories {"local" ~(str (.toURI (java.io.File. "maven_repository")))}
   :repl-options {:init-ns test.core}
   :profiles {
              :run      {:eval-in-leiningen true

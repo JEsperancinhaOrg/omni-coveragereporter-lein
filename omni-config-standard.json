@@ -16,6 +16,13 @@
   "useCoverallsCount": true,
   "branchCoverage": false,
   "fetchBranchNameFromEnv": false,
+  "coverallsToken": null,
+  "codecovToken": null,
+  "codacyToken": null,
+  "codacyApiToken": null,
+  "codacyOrganizationProvider": null,
+  "codacyUserName": null,
+  "codacyProjectName": null,
   "extraSourceFolder": [],
   "extraReportFolders": [],
   "reportRejectList": []

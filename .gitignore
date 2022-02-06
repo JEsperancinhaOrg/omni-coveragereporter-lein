@@ -25,3 +25,6 @@ pom.xml.asc
 .lein-failures
 .nrepl-port
 .cpcache/
+
+## Local Maven
+maven_repository
