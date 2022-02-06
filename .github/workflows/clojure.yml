@@ -19,5 +19,5 @@ jobs:
       run: lein test
     - name: Run Coverage
       run: lein cloverage --lcov
-    - name: Run Plugin
-      run: lein omni-coveragereporter-lein
+#     - name: Run Plugin
+#       run: lein omni-coveragereporter-lein
