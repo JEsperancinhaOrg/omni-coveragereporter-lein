@@ -26,3 +26,6 @@ FIXME: and add an example usage that actually makes sense:
 
     $ lein omni-coveragereporter-lein
 
+## References
+
+- [Clojure test coverage with Eftest and Cloverage](https://bogoyavlensky.com/blog/eftest-cloverage/)

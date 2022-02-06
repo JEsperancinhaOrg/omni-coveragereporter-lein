@@ -1,4 +1,5 @@
-(ns leiningen.omni-coveragereporter-lein)
+(ns leiningen.omni-coveragereporter-lein
+  (:require [clojure.core]))
 
 (defn omni-coveragereporter-lein
   "I don't do a lot."
