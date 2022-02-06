@@ -20,6 +20,6 @@ jobs:
     - name: Run Tests
       run: lein test
     - name: Run Coverage
-      run: lein with-profiles +coverage cloverage
+      run: lein with-profiles +coverage cloverage --lcov
     - name: Run Plugin
       run: lein with-profiles +run omni-coveragereporter-lein
