@@ -7,9 +7,32 @@
 
 [![omni-coveragereporter-lein](https://github.com/JEsperancinhaOrg/omni-coveragereporter-lein/actions/workflows/clojure.yml/badge.svg)](https://github.com/JEsperancinhaOrg/omni-coveragereporter-lein/actions/workflows/clojure.yml)
 
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/airflights-clojure.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/airflights-clojure.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/airflights-clojure.svg)](#)
+
+---
+
+## Tech stack
+
+---
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/clojure-50.png "Clojure")](https://clojure.org/)
+
+---
+
+## Introduction
+
 Omni reporter for lein projects
 
 A Leiningen plugin to do many wonderful things.
+
+---
+
+## Releases
+
+Keep up to date with current releases by checking the [ReleaseNotes.md](./ReleaseNotes.md) file.
+
+---
 
 ## Usage
 
@@ -25,6 +48,8 @@ Put `[omni-coveragereporter-lein "0.1.0-SNAPSHOT"]` into the `:plugins` vector o
 FIXME: and add an example usage that actually makes sense:
 
     $ lein omni-coveragereporter-lein
+
+---
 
 ## References
 
