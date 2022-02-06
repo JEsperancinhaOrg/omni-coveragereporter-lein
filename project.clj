@@ -11,7 +11,8 @@
   :repl-options {:init-ns test.core}
   :profiles {
              :run      {:eval-in-leiningen true
-                        :plugins           [[omni-coveragereporter-lein "0.0.0-SNAPSHOT"]]}
+                        :plugins           [[omni-coveragereporter-lein "0.0.0-SNAPSHOT"]]
+                        :gotome gotome}
              :coverage {:eval-in-leiningen false
                         :plugins           [[lein-cloverage "1.2.2"]]}}
   )

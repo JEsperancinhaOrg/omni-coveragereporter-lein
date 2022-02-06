@@ -7,8 +7,9 @@
 (defn omni-coveragereporter-lein
   "Omni Coverage Plugin For Leiningen Repos.
   Check https://leiningen.org/ for further details on how to use these repos"
-  [_ & _]
+  [_ & args]
   ;(.getCanonicalPath (clojure.java.io/file "."))
   ;(println (.getCanonicalPath (clojure.java.io/file ".")))
   (println (slurp banner))
-  )
+  (println (apply str args)))
+
