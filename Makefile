@@ -13,4 +13,4 @@ update-local:
 	mkdir -p maven_repository
 	mkdir -p maven_repository/org
 	mkdir -p maven_repository/org/jesperancinha
-	 cp -r ~/.m2/repository/org/jesperancinha/plugins maven_repository/org/jesperancinha
+	cp -r ~/.m2/repository/org/jesperancinha/plugins maven_repository/org/jesperancinha

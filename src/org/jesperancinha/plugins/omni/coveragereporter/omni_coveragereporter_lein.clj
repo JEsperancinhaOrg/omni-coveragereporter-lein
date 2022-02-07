@@ -1,4 +1,4 @@
-(ns leiningen.omni-coveragereporter-lein
+(ns org.jesperancinha.plugins.omni.coveragereporter.omni-coveragereporter-lein
   (:require [cheshire.core :as json]
             [clojure.core]
             [clojure.java.io :as io]
