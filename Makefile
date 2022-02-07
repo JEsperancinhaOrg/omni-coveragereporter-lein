@@ -8,3 +8,9 @@ build:
 	lein with-profiles +run omni-coveragereporter-lein
 run:
 	lein with-profiles +run omni-coveragereporter-lein
+update-local:
+	rm -r maven_repository
+	mkdir -p maven_repository
+	mkdir -p maven_repository/org
+	mkdir -p maven_repository/org/jesperancinha
+	 cp -r ~/.m2/repository/org/jesperancinha/plugins maven_repository/org/jesperancinha

@@ -1,9 +1,12 @@
 (ns leiningen.omni-coveragereporter-lein
   (:require [cheshire.core :as json]
             [clojure.core]
-            [clojure.java.io :as io])
-  (:import (java.io FileReader)
-           (org.jesperancinha.plugins.omni.reporter.pipelines PipelineImpl PipelineImpl$Companion)))
+            [clojure.java.io :as io]
+            [clojure.test :refer [is]])
+  (:import (java.io File FileReader)
+           (java.util ArrayList List)
+           (org.jesperancinha.plugins.omni.reporter.pipelines Pipeline PipelineImpl)
+           (org.jesperancinha.plugins.omni.reporter.processors CoverallsReportsProcessor)))
 
 (def banner (io/resource
               "banner.txt"))
@@ -37,15 +40,18 @@
         fetchBranchNameFromEnv (get-in json-config [:fetchBranchNameFromEnv])
         coverallsToken (or (get-in json-config [:coverallsToken] (or (System/getenv "COVERALLS_REPO_TOKEN") (System/getenv "COVERALLS_TOKEN"))))
         codecovToken (or (get-in json-config [:codecovToken] (System/getenv "CODECOV_TOKEN")))
-        codacyToken  (or (get-in json-config [:codacyToken] (System/getenv "CODACY_PROJECT_TOKEN")))
-        codacyApiToken (or (get-in json-config [:codacyApiToken](System/getenv "CODACY_API_TOKEN"))   )
+        codacyToken (or (get-in json-config [:codacyToken] (System/getenv "CODACY_PROJECT_TOKEN")))
+        codacyApiToken (or (get-in json-config [:codacyApiToken] (System/getenv "CODACY_API_TOKEN")))
         codacyOrganizationProvider (or (get-in json-config [:codacyOrganizationProvider] (System/getenv "CODACY_ORGANIZATION_PROVIDER")))
-        codacyUserName (or (get-in json-config [:codacyUserName](System/getenv "CODACY_USERNAME")))
-        codacyProjectName (or (get-in json-config [:codacyProjectName](System/getenv "CODACY_PROJECT_NAME")))
+        codacyUserName (or (get-in json-config [:codacyUserName] (System/getenv "CODACY_USERNAME")))
+        codacyProjectName (or (get-in json-config [:codacyProjectName] (System/getenv "CODACY_PROJECT_NAME")))
         extraSourceFolders (get-in json-config [:extraSourceFolder])
         extraReportFolders (get-in json-config [:extraReportFolders])
         reportRejectList (get-in json-config [:reportRejectList])
-        currentPipeline (PipelineImpl/currentPipeline (Boolean/valueOf fetchBranchNameFromEnv))
+        currentPipeline (is (instance? Pipeline (PipelineImpl/currentPipeline (Boolean/valueOf fetchBranchNameFromEnv))))
+        baseDir (is (instance? File (new File ("/"))))
+        coverallsProcessor (is (instance? CoverallsReportsProcessor (new CoverallsReportsProcessor
+                                                                         ((String/valueOf coverallsToken), (String/valueOf coverallsUrl), ^Pipeline currentPipeline, list , ^File baseDir, (Boolean/valueOf failOnUnknown), (Boolean/valueOf failOnReportNotFound), (Boolean/valueOf failOnReportSendingError), (Boolean/valueOf failOnXmlParsingError), (Boolean/valueOf branchCoverage), (Boolean/valueOf ignoreTestBuildDirectory), (Boolean/valueOf useCoverallsCount),list))))
         ]
     (println (format "Coveralls URL: %s" coverallsUrl))
     (println (format "Codacy URL: %s" codacyUrl))
