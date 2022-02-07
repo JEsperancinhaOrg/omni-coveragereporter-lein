@@ -101,6 +101,7 @@ FIXME: and add an example usage that actually makes sense:
 
 ## References
 
+- [Nexus Repository Manager](https://oss.sonatype.org/#welcome)
 - [How-to: Clojure libraries on Maven Central](https://www.juxt.pro/blog/maven-central)
 - [Clojure Bits: Working with JSON](https://alexanderoloo.com/blog/2019/09/10/clojure-bits-working-with-json.html)
 - [Clojure test coverage with Eftest and Cloverage](https://bogoyavlensky.com/blog/eftest-cloverage/)
