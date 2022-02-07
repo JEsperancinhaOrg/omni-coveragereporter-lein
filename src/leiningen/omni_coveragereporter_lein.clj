@@ -4,8 +4,6 @@
             [clojure.java.io :as io]
             [clojure.test :refer [is]])
   (:import (java.io File FileReader)
-           (java.util ArrayList List)
-           (org.jesperancinha.plugins.omni.reporter.pipelines Pipeline PipelineImpl)
            (org.jesperancinha.plugins.omni.reporter.processors CodacyProcessor CodecovProcessor CoverallsReportsProcessor)))
 
 (def banner (io/resource
