@@ -11,3 +11,4 @@
 > Functionalities related to multimodule projects will not be available on this release
 
 3. Does not considers multi-module projects
+4. First version is not verbose
