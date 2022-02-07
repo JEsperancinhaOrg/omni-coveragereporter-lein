@@ -18,7 +18,9 @@
   (println (.getCanonicalPath (clojure.java.io/file ".", "omni-config.json")))
   (println (slurp banner))
   (println "* Starting reporting...")
-  (let [config-file (.getCanonicalPath (clojure.java.io/file ".", "omni-config.json"))
+  (let [
+        config-file (.getCanonicalPath (clojure.java.io/file ".", "omni-config.json"))
+        base-dir (.getCanonicalPath (clojure.java.io/file "."))
         configuration (slurp (FileReader. config-file))
         json-config (json/decode configuration true)
         coverallsUrl (get-in json-config [:coverallsUrl])
@@ -49,9 +51,25 @@
         extraReportFolders (get-in json-config [:extraReportFolders])
         reportRejectList (get-in json-config [:reportRejectList])
         currentPipeline (is (instance? Pipeline (PipelineImpl/currentPipeline (Boolean/valueOf fetchBranchNameFromEnv))))
-        baseDir (is (instance? File (new File ("/"))))
-        coverallsProcessor (is (instance? CoverallsReportsProcessor (new CoverallsReportsProcessor
-                                                                         ((String/valueOf coverallsToken), (String/valueOf coverallsUrl), ^Pipeline currentPipeline, list , ^File baseDir, (Boolean/valueOf failOnUnknown), (Boolean/valueOf failOnReportNotFound), (Boolean/valueOf failOnReportSendingError), (Boolean/valueOf failOnXmlParsingError), (Boolean/valueOf branchCoverage), (Boolean/valueOf ignoreTestBuildDirectory), (Boolean/valueOf useCoverallsCount),list))))
+        coverallsProcessor (is
+                             (instance? CoverallsReportsProcessor
+                                        (CoverallsReportsProcessor/createProcessor
+                                                                                    (String/valueOf coverallsToken),
+                                                                                    false,
+                                                                                    (String/valueOf coverallsUrl) ,
+                                                                                    base-dir,
+                                                                                    base-dir,
+                                                                                    (Boolean/valueOf failOnUnknown),
+                                                                                    (Boolean/valueOf failOnReportNotFound),
+                                                                                    (Boolean/valueOf failOnReportSendingError),
+                                                                                    (Boolean/valueOf failOnXmlParsingError),
+                                                                                    (Boolean/valueOf fetchBranchNameFromEnv),
+                                                                                    (Boolean/valueOf branchCoverage),
+                                                                                    (Boolean/valueOf ignoreTestBuildDirectory),
+                                                                                    (Boolean/valueOf useCoverallsCount),
+                                                                                    "",
+                                                                                    ""
+                                                                                    "")))
         ]
     (println (format "Coveralls URL: %s" coverallsUrl))
     (println (format "Codacy URL: %s" codacyUrl))
