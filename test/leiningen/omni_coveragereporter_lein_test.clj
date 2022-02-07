@@ -3,4 +3,5 @@
   (:require [leiningen.omni-coveragereporter-lein :refer [omni-coveragereporter-lein]]))
 
 (deftest omni_coveragereporter_lein-test
+  (omni-coveragereporter-lein ())
   )

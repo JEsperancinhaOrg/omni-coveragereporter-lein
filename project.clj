@@ -5,10 +5,12 @@
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
             :url  "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [
+                 [org.slf4j/slf4j-api "1.7.35"]
                  [org.clojure/clojure "1.10.3"]
                  [org.jesperancinha.plugins/omni-coveragereporter-commons "0.1.6"]
                  [cheshire "5.9.0"]
                  [org.jetbrains.kotlin/kotlin-stdlib "1.6.10"]
+                 [ch.qos.logback/logback-classic "1.2.10"]
                  ]
   :repositories {"local" ~(str (.toURI (java.io.File. "maven_repository")))}
   :repl-options {:init-ns test.core}

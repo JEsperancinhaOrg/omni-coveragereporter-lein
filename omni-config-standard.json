@@ -3,7 +3,7 @@
   "codacyUrl": "https://api.codacy.com",
   "codecovUrl": "https://codecov.io/upload",
   "sourceEncoding": "UTF-8",
-  "projectBaseDir": "/",
+  "projectBaseDir": "projectDir",
   "failOnNoEncoding": false,
   "failOnUnknown": false,
   "failOnReportNotFound": false,
@@ -23,7 +23,7 @@
   "codacyOrganizationProvider": null,
   "codacyUserName": null,
   "codacyProjectName": null,
-  "extraSourceFolder": [],
-  "extraReportFolders": [],
-  "reportRejectList": []
+  "extraSourceFolder": "sampledir1,sampledir2",
+  "extraReportFolders": "sampledir1,sampledir2",
+  "reportRejectList": "reportFileName1, reportFileName2"
 }

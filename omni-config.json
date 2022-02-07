@@ -3,7 +3,6 @@
   "codacyUrl": "https://api.codacy.com",
   "codecovUrl": "https://codecov.io/upload",
   "sourceEncoding": "UTF-8",
-  "projectBaseDir": "/",
   "failOnNoEncoding": false,
   "failOnUnknown": false,
   "failOnReportNotFound": false,
@@ -15,8 +14,5 @@
   "ignoreTestBuildDirectory": false,
   "useCoverallsCount": true,
   "branchCoverage": false,
-  "fetchBranchNameFromEnv": false,
-  "extraSourceFolder": [],
-  "extraReportFolders": [],
-  "reportRejectList": []
+  "fetchBranchNameFromEnv": false
 }

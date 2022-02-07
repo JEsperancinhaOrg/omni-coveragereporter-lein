@@ -6,7 +6,7 @@
   (:import (java.io File FileReader)
            (java.util ArrayList List)
            (org.jesperancinha.plugins.omni.reporter.pipelines Pipeline PipelineImpl)
-           (org.jesperancinha.plugins.omni.reporter.processors CoverallsReportsProcessor)))
+           (org.jesperancinha.plugins.omni.reporter.processors CodacyProcessor CodecovProcessor CoverallsReportsProcessor)))
 
 (def banner (io/resource
               "banner.txt"))
@@ -21,13 +21,15 @@
   (let [
         config-file (.getCanonicalPath (clojure.java.io/file ".", "omni-config.json"))
         base-dir (.getCanonicalPath (clojure.java.io/file "."))
+        src-dir (.getCanonicalPath (clojure.java.io/file "src"))
+        report-dir (.getCanonicalPath (clojure.java.io/file "target/coverage"))
         configuration (slurp (FileReader. config-file))
         json-config (json/decode configuration true)
         coverallsUrl (get-in json-config [:coverallsUrl])
         codacyUrl (get-in json-config [:codacyUrl])
         codecovUrl (get-in json-config [:codecovUrl])
-        sourceEncoding (get-in json-config [:sourceEncoding])
-        projectBaseDir (get-in json-config [:projectBaseDir])
+        sourceEncoding (get-in json-config [:sourceEncoding] (or (apply str "UTF-8")))
+        projectBaseDir (get-in json-config [:projectBaseDir] (or (apply str base-dir)))
         failOnNoEncoding (get-in json-config [:failOnNoEncoding])
         failOnUnknown (get-in json-config [:failOnUnknown])
         failOnReportNotFound (get-in json-config [:failOnReportNotFound])
@@ -49,33 +51,17 @@
         codacyProjectName (or (get-in json-config [:codacyProjectName] (System/getenv "CODACY_PROJECT_NAME")))
         extraSourceFolders (get-in json-config [:extraSourceFolder])
         extraReportFolders (get-in json-config [:extraReportFolders])
-        reportRejectList (get-in json-config [:reportRejectList])
-        currentPipeline (is (instance? Pipeline (PipelineImpl/currentPipeline (Boolean/valueOf fetchBranchNameFromEnv))))
-        coverallsProcessor (is
-                             (instance? CoverallsReportsProcessor
-                                        (CoverallsReportsProcessor/createProcessor
-                                                                                    (String/valueOf coverallsToken),
-                                                                                    false,
-                                                                                    (String/valueOf coverallsUrl) ,
-                                                                                    base-dir,
-                                                                                    base-dir,
-                                                                                    (Boolean/valueOf failOnUnknown),
-                                                                                    (Boolean/valueOf failOnReportNotFound),
-                                                                                    (Boolean/valueOf failOnReportSendingError),
-                                                                                    (Boolean/valueOf failOnXmlParsingError),
-                                                                                    (Boolean/valueOf fetchBranchNameFromEnv),
-                                                                                    (Boolean/valueOf branchCoverage),
-                                                                                    (Boolean/valueOf ignoreTestBuildDirectory),
-                                                                                    (Boolean/valueOf useCoverallsCount),
-                                                                                    "",
-                                                                                    ""
-                                                                                    "")))
+        reportRejectList (or (get-in json-config [:reportRejectList] (or (apply str ""))))
         ]
     (println (format "Coveralls URL: %s" coverallsUrl))
     (println (format "Codacy URL: %s" codacyUrl))
     (println (format "Codecov URL: %s" codecovUrl))
     (println (format "Coveralls token: %s" "checkToken(coverallsToken)"))
+    (println (format "Coveralls token: %s" "checkToken(coverallsToken)"))
     (println (format "Codecov token: %s" "checkToken(codecovToken)"))
+    (println (format "Disable Coveralls: %s" disableCoveralls))
+    (println (format "Disable Codecov: %s" disableCodecov))
+    (println (format "Disable Codacy: %s" disableCodacy))
     (println (format "Codacy token: %s" "checkToken(codacyToken)"))
     (println (format "Codacy API token: %s" "checkToken(codacyApiToken)"))
     (println (format "Codacy API fully configured: %s" "this.isCodacyAPIConfigured"))
@@ -94,5 +80,55 @@
     (println (format "extraSourceFolders: %s" extraSourceFolders))
     (println (format "extraReportFolders: %s" extraReportFolders))
     (println (format "reportRejectList: %s" reportRejectList))
-    )
-  (println "* Reporting Finished!"))
+    (.processReports (CoverallsReportsProcessor/createProcessor
+                       coverallsToken,
+                       disableCoveralls,
+                       coverallsUrl,
+                       base-dir,
+                       base-dir,
+                       failOnUnknown,
+                       failOnReportNotFound,
+                       failOnReportSendingError,
+                       failOnXmlParsingError,
+                       fetchBranchNameFromEnv,
+                       branchCoverage,
+                       ignoreTestBuildDirectory,
+                       useCoverallsCount,
+                       src-dir,
+                       report-dir
+                       reportRejectList))
+    (.processReports (CodacyProcessor/createProcessor
+                       codacyToken,
+                       codacyApiToken
+                       codacyOrganizationProvider,
+                       codacyUserName,
+                       codacyProjectName
+                       disableCodacy,
+                       codacyUrl,
+                       base-dir,
+                       base-dir,
+                       failOnUnknown,
+                       failOnReportNotFound,
+                       failOnReportSendingError,
+                       failOnXmlParsingError,
+                       fetchBranchNameFromEnv,
+                       ignoreTestBuildDirectory,
+                       src-dir,
+                       report-dir
+                       reportRejectList))
+    (.processReports (CodecovProcessor/createProcessor
+                       codecovToken,
+                       disableCodecov,
+                       codecovUrl,
+                       base-dir,
+                       base-dir,
+                       failOnUnknown,
+                       failOnReportNotFound,
+                       failOnReportSendingError,
+                       failOnXmlParsingError,
+                       ignoreTestBuildDirectory,
+                       src-dir,
+                       report-dir
+                       reportRejectList))
+    (println "* Reporting Finished!")
+    ))
