@@ -49,20 +49,19 @@
         codacyOrganizationProvider (or (get-in json-config [:codacyOrganizationProvider] (System/getenv "CODACY_ORGANIZATION_PROVIDER")))
         codacyUserName (or (get-in json-config [:codacyUserName] (System/getenv "CODACY_USERNAME")))
         codacyProjectName (or (get-in json-config [:codacyProjectName] (System/getenv "CODACY_PROJECT_NAME")))
-        extraSourceFolders (get-in json-config [:extraSourceFolder])
-        extraReportFolders (get-in json-config [:extraReportFolders])
+        extraSourceFolders (or (get-in json-config [:extraSourceFolder]) (or (apply str src-dir)))
+        extraReportFolders (or (get-in json-config [:extraReportFolders]) (or (apply str report-dir)))
         reportRejectList (or (get-in json-config [:reportRejectList] (or (apply str ""))))
         ]
     (println (format "Coveralls URL: %s" coverallsUrl))
     (println (format "Codacy URL: %s" codacyUrl))
     (println (format "Codecov URL: %s" codecovUrl))
     (println (format "Coveralls token: %s" "checkToken(coverallsToken)"))
-    (println (format "Coveralls token: %s" "checkToken(coverallsToken)"))
+    (println (format "Codacy token: %s" "checkToken(codacyToken)"))
     (println (format "Codecov token: %s" "checkToken(codecovToken)"))
     (println (format "Disable Coveralls: %s" disableCoveralls))
     (println (format "Disable Codecov: %s" disableCodecov))
     (println (format "Disable Codacy: %s" disableCodacy))
-    (println (format "Codacy token: %s" "checkToken(codacyToken)"))
     (println (format "Codacy API token: %s" "checkToken(codacyApiToken)"))
     (println (format "Codacy API fully configured: %s" "this.isCodacyAPIConfigured"))
     (println (format "Source Encoding: %s" sourceEncoding))
@@ -84,8 +83,8 @@
                        coverallsToken,
                        disableCoveralls,
                        coverallsUrl,
-                       base-dir,
-                       base-dir,
+                       projectBaseDir,
+                       projectBaseDir,
                        failOnUnknown,
                        failOnReportNotFound,
                        failOnReportSendingError,
@@ -94,8 +93,8 @@
                        branchCoverage,
                        ignoreTestBuildDirectory,
                        useCoverallsCount,
-                       src-dir,
-                       report-dir
+                       extraSourceFolders,
+                       extraReportFolders
                        reportRejectList))
     (.processReports (CodacyProcessor/createProcessor
                        codacyToken,
@@ -105,30 +104,30 @@
                        codacyProjectName
                        disableCodacy,
                        codacyUrl,
-                       base-dir,
-                       base-dir,
+                       projectBaseDir,
+                       projectBaseDir,
                        failOnUnknown,
                        failOnReportNotFound,
                        failOnReportSendingError,
                        failOnXmlParsingError,
                        fetchBranchNameFromEnv,
                        ignoreTestBuildDirectory,
-                       src-dir,
-                       report-dir
+                       extraSourceFolders,
+                       extraReportFolders
                        reportRejectList))
     (.processReports (CodecovProcessor/createProcessor
                        codecovToken,
                        disableCodecov,
                        codecovUrl,
-                       base-dir,
-                       base-dir,
+                       projectBaseDir,
+                       projectBaseDir,
                        failOnUnknown,
                        failOnReportNotFound,
                        failOnReportSendingError,
                        failOnXmlParsingError,
                        ignoreTestBuildDirectory,
-                       src-dir,
-                       report-dir
+                       extraSourceFolders,
+                       extraReportFolders
                        reportRejectList))
     (println "* Reporting Finished!")
     ))
