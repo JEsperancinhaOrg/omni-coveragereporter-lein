@@ -1,6 +1,6 @@
 # omni-coveragereporter-lein Releases
 
-## Release 0.0.0 - Upcoming
+## Release 0.0.0 - 2022/02/07
 
 1. Configurable plugin using external [omni-config](./omni-config.json) file. Must have the same name and only parameters of the expected name will be considered. It must be a valid JSON formatted file.
 2. Should contain all functionalities present in library and plugins:
