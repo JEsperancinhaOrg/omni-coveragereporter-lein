@@ -7,6 +7,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.plugins/omni-coveragereporter-lein)](https://mvnrepository.com/artifact/org.jesperancinha.plugins/omni-coveragereporter-lein)
 [![Sonatype Nexus](https://img.shields.io/nexus/r/https/oss.sonatype.org/org.jesperancinha.plugins/omni-coveragereporter-lein.svg)](https://search.maven.org/artifact/org.jesperancinha.plugins/omni-coveragereporter-lein)
 
+[![javadoc](https://javadoc.io/badge2/org.jesperancinha.plugins/omni-coveragereporter-lein/javadoc.svg)](https://javadoc.io/doc/org.jesperancinha.plugins/omni-coveragereporter-lein)
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
 [![omni-coveragereporter-lein](https://github.com/JEsperancinhaOrg/omni-coveragereporter-lein/actions/workflows/clojure.yml/badge.svg)](https://github.com/JEsperancinhaOrg/omni-coveragereporter-lein/actions/workflows/clojure.yml)
@@ -106,10 +107,10 @@ lein deploy
 
 ## References
 
-- [Nexus Repository Manager](https://oss.sonatype.org/#welcome)
-- [How-to: Clojure libraries on Maven Central](https://www.juxt.pro/blog/maven-central)
-- [Clojure Bits: Working with JSON](https://alexanderoloo.com/blog/2019/09/10/clojure-bits-working-with-json.html)
-- [Clojure test coverage with Eftest and Cloverage](https://bogoyavlensky.com/blog/eftest-cloverage/)
+-   [Nexus Repository Manager](https://oss.sonatype.org/#welcome)
+-   [How-to: Clojure libraries on Maven Central](https://www.juxt.pro/blog/maven-central)
+-   [Clojure Bits: Working with JSON](https://alexanderoloo.com/blog/2019/09/10/clojure-bits-working-with-json.html)
+-   [Clojure test coverage with Eftest and Cloverage](https://bogoyavlensky.com/blog/eftest-cloverage/)
 
 ## Buy me a coffee
 
