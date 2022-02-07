@@ -1,4 +1,4 @@
-(defproject omni-coveragereporter-lein "0.0.0-SNAPSHOT"
+(defproject omni-coveragereporter-lein "0.0.0"
   :name omni-coveragereporter-lein
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
@@ -10,7 +10,7 @@
                  [org.slf4j/slf4j-log4j12 "1.6.2"]
                  [org.clojure/clojure "1.10.3"]
                  [log4j "1.2.17"]
-                 [org.jesperancinha.plugins/omni-coveragereporter-commons "0.1.6"]
+                 [org.jesperancinha.plugins/omni-coveragereporter-commons "0.2.0"]
                  [cheshire "5.9.0"]
                  [org.jetbrains.kotlin/kotlin-stdlib "1.6.10"]
                  [org.apache.logging.log4j/log4j-core "2.17.1"]
@@ -22,7 +22,7 @@
   :repl-options {:init-ns test.core}
   :profiles {
              :run      {:eval-in-leiningen true
-                        :plugins           [[omni-coveragereporter-lein "0.0.0-SNAPSHOT"]]}
+                        :plugins           [[omni-coveragereporter-lein "0.0.0"]]}
              :coverage {:eval-in-leiningen false
                         :plugins           [[lein-cloverage "1.2.2"]]}}
   )
