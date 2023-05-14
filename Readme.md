@@ -28,12 +28,9 @@
 
 ---
 
-## Tech stack
+## Technologies used
 
----
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/clojure-50.png "Clojure")](https://clojure.org/)
-
----
+Please check the [TechStack.md](TechStack.md) file for details.
 
 ## Introduction
 
